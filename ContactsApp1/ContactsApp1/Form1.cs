@@ -15,7 +15,8 @@ namespace ContactsApp1
     {
         public Form1()
         {
-            InitializeComponent();
+        private Project _project = new Project();
+        InitializeComponent();
         }
     }
 }
