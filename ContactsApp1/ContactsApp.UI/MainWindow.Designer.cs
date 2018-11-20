@@ -28,13 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.ProjectControl = new ContactsApp.UI.Controls.ProjectControl();
+            this.ContactControl = new ContactsApp.UI.Controls.ContactControl();
             this.SuspendLayout();
+            // 
+            // ProjectControl
+            // 
+            this.ProjectControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ProjectControl.Location = new System.Drawing.Point(13, 13);
+            this.ProjectControl.Name = "ProjectControl";
+            this.ProjectControl.Project = null;
+            this.ProjectControl.Size = new System.Drawing.Size(250, 257);
+            this.ProjectControl.TabIndex = 1;
+            // 
+            // ContactControl
+            // 
+            this.ContactControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ContactControl.Location = new System.Drawing.Point(269, 13);
+            this.ContactControl.Name = "ContactControl";
+            this.ContactControl.Size = new System.Drawing.Size(299, 151);
+            this.ContactControl.TabIndex = 0;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(561, 273);
+            this.Controls.Add(this.ProjectControl);
+            this.Controls.Add(this.ContactControl);
             this.Name = "MainWindow";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -42,6 +69,10 @@
         }
 
         #endregion
+
+        private Controls.ContactControl ContactControl;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private Controls.ProjectControl ProjectControl;
     }
 }
 

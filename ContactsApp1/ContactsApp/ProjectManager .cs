@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using Newtonsoft.Json;
 
 namespace ContactsApp
@@ -49,6 +48,7 @@ namespace ContactsApp
                 JsonSerializer.Serialize(jsonWriter, project);
             }
         }
+
         /// <summary>
         /// Загружает проект из файла.
         /// </summary>
@@ -60,7 +60,6 @@ namespace ContactsApp
             {
                 return JsonSerializer.Deserialize<Project>(jsonReader);
             }
-
         }
     }
 }

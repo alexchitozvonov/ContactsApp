@@ -56,7 +56,7 @@ namespace ContactsApp
             get => _dateOfBirthday;
             set
             {
-                if (value > DateTime.Today)
+                if (value.Date > DateTime.Today) //DateTime.Now
                     throw new ArgumentException("Дата не должна быть больше " + DateTime.Today.ToShortDateString());
 
                 if (value < DateTime.Today.AddYears(-120))
@@ -128,8 +128,18 @@ namespace ContactsApp
                 if (!EmailRegex.IsMatch(value))
                     throw new ArgumentException("Формат E-mail не соответствует формату");
 
+
                 _email = value;
             }
+        }
+
+        /// <summary>
+        /// Представляет объект в виде строки.
+        /// </summary>
+        /// <returns>Строка, представляющая объект.</returns>
+        public override string ToString()
+        {
+            return $"{Name} {Surname}";
         }
     }
 }
