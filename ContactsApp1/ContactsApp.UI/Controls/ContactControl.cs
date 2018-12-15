@@ -13,5 +13,16 @@ namespace ContactsApp.UI.Controls
         private void BurthdayLabel_Click(object sender, EventArgs e)
         {
         }
+
+        public void UpdateData(Contact contact)
+        {
+            SurnameTextBox.Text = contact.Surname; 
+            NameTextBox.Text = contact.Name;
+            BurthdayDateTimePicker.Value = contact.DateOfBirthday;
+            PhoneTextBox.Text = contact.Phone;
+            EmailTextBox.Text = contact.Email;
+            VkcomTextBox.Text = contact.VkId;
+
+        }
     }
 }

@@ -38,10 +38,11 @@
             this.ProjectControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProjectControl.Location = new System.Drawing.Point(13, 13);
+            this.ProjectControl.Location = new System.Drawing.Point(12, 4);
             this.ProjectControl.Name = "ProjectControl";
             this.ProjectControl.Project = null;
-            this.ProjectControl.Size = new System.Drawing.Size(250, 257);
+            this.ProjectControl.SelectedContact = null;
+            this.ProjectControl.Size = new System.Drawing.Size(264, 318);
             this.ProjectControl.TabIndex = 1;
             // 
             // ContactControl
@@ -49,21 +50,25 @@
             this.ContactControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ContactControl.BackColor = System.Drawing.SystemColors.Control;
+            this.ContactControl.Enabled = false;
             this.ContactControl.Location = new System.Drawing.Point(269, 13);
             this.ContactControl.Name = "ContactControl";
-            this.ContactControl.Size = new System.Drawing.Size(299, 151);
+            this.ContactControl.Size = new System.Drawing.Size(488, 212);
             this.ContactControl.TabIndex = 0;
+            this.ContactControl.Load += new System.EventHandler(this.ContactControl_Load);
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(561, 273);
+            this.ClientSize = new System.Drawing.Size(769, 334);
             this.Controls.Add(this.ProjectControl);
             this.Controls.Add(this.ContactControl);
             this.Name = "MainWindow";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.ResumeLayout(false);
 
         }

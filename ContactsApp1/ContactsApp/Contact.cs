@@ -56,10 +56,10 @@ namespace ContactsApp
             get => _dateOfBirthday;
             set
             {
-                if (value.Date > DateTime.Today) //DateTime.Now
+                if (value.Date > DateTime.Now) //DateTime.Now
                     throw new ArgumentException("Дата не должна быть больше " + DateTime.Today.ToShortDateString());
 
-                if (value < DateTime.Today.AddYears(-120))
+                if (value.Date < DateTime.Now.AddYears(-120))
                     throw new ArgumentException("Дата не может быть меньше " + DateTime.Today.AddYears(-120));
 
                 _dateOfBirthday = value;
@@ -131,6 +131,16 @@ namespace ContactsApp
 
                 _email = value;
             }
+        }
+        public Contact(string name, string surname, DateTime burthday,
+            string phone, string email, string VkId)
+        {
+            this.Email = email;
+            Name = name;
+            Surname = surname;
+            DateOfBirthday = burthday;
+            Phone = phone;
+            this.VkId = VkId; 
         }
 
         /// <summary>

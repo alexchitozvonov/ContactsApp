@@ -20,5 +20,23 @@ namespace ContactsApp
         /// Контакты.
         /// </summary>
         public List<Contact> Contacts { get; }
+
+        /// <summary>
+        /// Добавление контакта.
+        /// </summary>
+        /// <param name="contact">Контакт.</param>
+        public void AddContact(Contact contact)
+        {
+            Contacts.Add(contact);
+        }
+
+        /// <summary>
+        /// Удаление контакта.
+        /// </summary>
+        /// <param name="contact"></param>
+        public void RemoveContact(Contact contact)
+        {
+            Contacts.Remove(contact);
+        }
     }
 }

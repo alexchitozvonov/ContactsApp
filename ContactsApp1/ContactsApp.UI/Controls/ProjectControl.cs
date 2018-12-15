@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using ContactsApp.UI.CustomEventArgs;
 
 namespace ContactsApp.UI.Controls
 {
@@ -11,9 +12,14 @@ namespace ContactsApp.UI.Controls
         private Project _project;
 
         /// <summary>
+        /// Выделенный контакт.
+        /// </summary>
+        private Contact _selectedContact;
+
+        /// <summary>
         /// Происходит, когда изменяется выбранный контакт.
         /// </summary>
-        public Action<object, EventArgs> SelectedContactChanged;
+        public event Action<object, SelectedContactChangedEventArgs> SelectedContactChanged;
 
         /// <summary>
         /// Конструктор.
@@ -39,10 +45,19 @@ namespace ContactsApp.UI.Controls
         /// <summary>
         /// Выбранный контакт.
         /// </summary>
-        public Contact SelectedContact => (Contact) ProjectListBox.SelectedItem;
-
+        public Contact SelectedContact
+        {
+            get => _selectedContact;
+            set
+            {
+                var oldSelectedContact = _selectedContact;
+                _selectedContact = value; 
+                SelectedContactChanged?.Invoke(this, new SelectedContactChangedEventArgs(oldSelectedContact, _selectedContact));
+            }
+        }
+          
         /// <summary>
-        /// Перерисовывает <see cref="ProjectListBox" />.
+        /// Перерисовывает <see cref="ProjectListBox"/>.
         /// </summary>
         private void UpdateContacts()
         {
@@ -53,9 +68,37 @@ namespace ContactsApp.UI.Controls
             ProjectListBox.Update();
         }
 
+
         private void ProjectListBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            SelectedContactChanged.Invoke(this, e);
+            SelectedContact = (Contact) ProjectListBox.SelectedItem;
+        }
+        
+        private void AddContactButton_Click(object sender, EventArgs e)
+        {
+            var addForm = new AddForm();
+            if (addForm.ShowDialog() == DialogResult.OK)
+            {
+                Project.AddContact(addForm.Contact);
+                UpdateContacts();
+            }
+        }
+
+        private void RemoveContactButton_Click(object sender, EventArgs e)
+        {
+            Project.RemoveContact(_project.Contacts[ProjectListBox.SelectedIndex]);
+            UpdateContacts();
+        }
+
+        private void EditContactButton_Click(object sender, EventArgs e)
+        {
+            var addForm = new AddForm(_project.Contacts[ProjectListBox.SelectedIndex]);
+            if (addForm.ShowDialog() == DialogResult.OK)
+            {
+                Project.RemoveContact(_project.Contacts[ProjectListBox.SelectedIndex]);
+                Project.AddContact(addForm.Contact);
+                UpdateContacts();
+            }
         }
     }
 }

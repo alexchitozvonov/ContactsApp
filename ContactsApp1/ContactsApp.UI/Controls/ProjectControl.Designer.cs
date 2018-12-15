@@ -58,41 +58,44 @@ namespace ContactsApp.UI.Controls
             // 
             this.ProjectListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.ProjectListBox.FormattingEnabled = true;
-            this.ProjectListBox.Location = new System.Drawing.Point(0, 29);
+            this.ProjectListBox.Location = new System.Drawing.Point(14, 29);
             this.ProjectListBox.Name = "ProjectListBox";
-            this.ProjectListBox.Size = new System.Drawing.Size(250, 199);
+            this.ProjectListBox.Size = new System.Drawing.Size(250, 225);
             this.ProjectListBox.TabIndex = 2;
             this.ProjectListBox.SelectedValueChanged += new System.EventHandler(this.ProjectListBox_SelectedValueChanged);
             // 
             // AddContactButton
             // 
             this.AddContactButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.AddContactButton.Location = new System.Drawing.Point(0, 234);
+            this.AddContactButton.Location = new System.Drawing.Point(14, 268);
             this.AddContactButton.Name = "AddContactButton";
             this.AddContactButton.Size = new System.Drawing.Size(21, 23);
             this.AddContactButton.TabIndex = 3;
             this.AddContactButton.Text = "+";
             this.AddContactButton.UseVisualStyleBackColor = true;
+            this.AddContactButton.Click += new System.EventHandler(this.AddContactButton_Click);
             // 
             // EditContactButton
             // 
             this.EditContactButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.EditContactButton.Location = new System.Drawing.Point(27, 234);
+            this.EditContactButton.Location = new System.Drawing.Point(41, 268);
             this.EditContactButton.Name = "EditContactButton";
             this.EditContactButton.Size = new System.Drawing.Size(75, 23);
             this.EditContactButton.TabIndex = 4;
             this.EditContactButton.Text = "Edit contact";
             this.EditContactButton.UseVisualStyleBackColor = true;
+            this.EditContactButton.Click += new System.EventHandler(this.EditContactButton_Click);
             // 
             // RemoveContactButton
             // 
             this.RemoveContactButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.RemoveContactButton.Location = new System.Drawing.Point(108, 234);
+            this.RemoveContactButton.Location = new System.Drawing.Point(122, 268);
             this.RemoveContactButton.Name = "RemoveContactButton";
             this.RemoveContactButton.Size = new System.Drawing.Size(21, 23);
             this.RemoveContactButton.TabIndex = 5;
             this.RemoveContactButton.Text = "-";
             this.RemoveContactButton.UseVisualStyleBackColor = true;
+            this.RemoveContactButton.Click += new System.EventHandler(this.RemoveContactButton_Click);
             // 
             // ProjectControl
             // 
@@ -105,7 +108,7 @@ namespace ContactsApp.UI.Controls
             this.Controls.Add(this.AddContactButton);
             this.Controls.Add(this.ProjectListBox);
             this.Name = "ProjectControl";
-            this.Size = new System.Drawing.Size(250, 257);
+            this.Size = new System.Drawing.Size(278, 291);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -116,8 +119,8 @@ namespace ContactsApp.UI.Controls
         private System.Windows.Forms.Label FindLabel;
         private System.Windows.Forms.TextBox FindTextBox;
         private System.Windows.Forms.ListBox ProjectListBox;
-        private System.Windows.Forms.Button AddContactButton;
         private System.Windows.Forms.Button EditContactButton;
         private System.Windows.Forms.Button RemoveContactButton;
+        public System.Windows.Forms.Button AddContactButton;
     }
 }
