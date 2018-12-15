@@ -24,11 +24,11 @@ namespace ContactsApp.UI
             InitializeComponent();
 
             var _project = projectManager.LoadFromFile();
-            //var data = DateTime.Now.AddYears(-1);
-            //var Contact = new Contact("vasa","da",data, "+78945612301", "agjdd@mdw.ru","12");
-            ///var list = new List<Contact>();
-            //list.Add(Contact);
-            //var _project = new Project(list);
+           //var data = DateTime.Now.AddYears(-1);
+           //var Contact = new Contact("vasa","da",data, "+78945612301", "agjdd@mdw.ru","12");
+           //var list = new List<Contact>();
+           // list.Add(Contact);
+           // var _project = new Project(list);
             ProjectControl.Project = _project;
             ProjectControl.SelectedContactChanged += (sender, args) => ContactControl.UpdateData(ProjectControl.SelectedContact); 
 
@@ -42,10 +42,10 @@ namespace ContactsApp.UI
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
-            var projectManager =
-                new ProjectManager(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                    "ContactApp.contacts"));
-            projectManager.SaveToFile(_project);
+            //var projectManager =
+            //    new ProjectManager(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+            //        "ContactApp.contacts"));
+           // projectManager.SaveToFile(_project);
         }
     }
 }

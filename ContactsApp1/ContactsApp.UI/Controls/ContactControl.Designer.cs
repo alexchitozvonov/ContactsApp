@@ -145,6 +145,7 @@ namespace ContactsApp.UI.Controls
             this.PhoneTextBox.Name = "PhoneTextBox";
             this.PhoneTextBox.Size = new System.Drawing.Size(199, 20);
             this.PhoneTextBox.TabIndex = 18;
+            this.PhoneTextBox.TextChanged += new System.EventHandler(this.PhoneTextBox_TextChanged_1);
             // 
             // VkcomTextBox
             // 

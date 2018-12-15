@@ -58,7 +58,8 @@ namespace ContactsApp
             using (var streamReader = new StreamReader(_pathToFile))
             using (var jsonReader = new JsonTextReader(streamReader))
             {
-                return JsonSerializer.Deserialize<Project>(jsonReader);
+                //return JsonSerializer.Deserialize<Project>(jsonReader);
+                return (Project)JsonSerializer.Deserialize(jsonReader, typeof(Project));
             }
         }
     }

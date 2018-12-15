@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Text.RegularExpressions;
 
 namespace ContactsApp
@@ -11,7 +12,7 @@ namespace ContactsApp
         /// <summary>
         /// Регулярка для телефона.
         /// </summary>
-        private static readonly Regex PhoneRegex = new Regex(@"[+7|8]\d{10}");
+        public static readonly Regex PhoneRegex = new Regex(@"[+7|8]\d{10}");
 
         /// <summary>
         /// Регулярка для e-mail.
@@ -21,7 +22,7 @@ namespace ContactsApp
         /// <summary>
         /// Дата рождения.
         /// </summary>
-        private DateTime _dateOfBirthday;
+        private DateTime _dateOfBirthday = DateTime.Now.AddYears(-16);
 
         /// <summary>
         /// E-mail.
@@ -51,18 +52,19 @@ namespace ContactsApp
         /// <summary>
         /// Дата рождения.
         /// </summary>
+        [DefaultValue("2017-12-15T09:46:40.4157638+03:00")]
         public DateTime DateOfBirthday
         {
             get => _dateOfBirthday;
             set
             {
-                if (value.Date > DateTime.Now) //DateTime.Now
-                    throw new ArgumentException("Дата не должна быть больше " + DateTime.Today.ToShortDateString());
+                    if (value.Date > DateTime.Now) 
+                        throw new ArgumentException("Дата не должна быть больше " + DateTime.Today.ToShortDateString());
 
-                if (value.Date < DateTime.Now.AddYears(-120))
-                    throw new ArgumentException("Дата не может быть меньше " + DateTime.Today.AddYears(-120));
+                    if (value.Date < DateTime.Now.AddYears(-120))
+                        throw new ArgumentException("Дата не может быть меньше " + DateTime.Today.AddYears(-120));
 
-                _dateOfBirthday = value;
+                    _dateOfBirthday = value;
             }
         }
 

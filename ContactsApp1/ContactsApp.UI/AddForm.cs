@@ -23,7 +23,7 @@ namespace ContactsApp.UI
             InitializeComponent();
             this.contactControl.SurnameTextBox.Text = contact.Surname;
             this.contactControl.NameTextBox.Text = contact.Name;
-            this.contactControl.BurthdayDateTimePicker.Value = contact.DateOfBirthday;
+            this.contactControl.BurthdayDateTimePicker.Value = (System.DateTime)contact.DateOfBirthday;
             this.contactControl.PhoneTextBox.Text = contact.Phone;
             this.contactControl.EmailTextBox.Text = contact.Email;
             this.contactControl.VkcomTextBox.Text = contact.VkId;
