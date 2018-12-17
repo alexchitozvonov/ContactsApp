@@ -11,10 +11,10 @@ namespace ContactsApp.UI.Controls
             InitializeComponent();
         }
 
-        private void BurthdayLabel_Click(object sender, EventArgs e)
-        {
-        }
-
+      /// <summary>
+      /// Обновить данные в полях.
+      /// </summary>
+      /// <param name="contact"></param>
         public void UpdateData(Contact contact)
         {
             SurnameTextBox.Text = contact.Surname; 
@@ -26,15 +26,43 @@ namespace ContactsApp.UI.Controls
 
         }
 
+        /// <summary>
+        /// Подсказка для телефона при изменении поля.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PhoneTextBox_TextChanged_1(object sender, EventArgs e)
-        {
+        { 
             if (!Contact.PhoneRegex.IsMatch(PhoneTextBox.Text))
             {
                 var tooltip = new ToolTip();
-                PhoneTextBox.BackColor = Color.Red;
+                PhoneTextBox.BackColor = Color.FromArgb(255,140,105);
                 tooltip.SetToolTip(this.PhoneTextBox, "номер телефона +7000000000 или 80000000000");
             }
+            else
+            {
+                PhoneTextBox.BackColor = Color.White;
+            }
             
+        }
+
+        /// <summary>
+        /// Подсказка для E-mail при изменении поля.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EmailTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (!Contact.EmailRegex.IsMatch(EmailTextBox.Text))
+            {
+                var tooltip = new ToolTip();
+                EmailTextBox.BackColor = Color.FromArgb(255, 140, 105);
+                tooltip.SetToolTip(this.EmailTextBox, "E-mail aaaaaaaaaaaa@mail.com");
+            }
+            else
+            {
+                EmailTextBox.BackColor = Color.White;
+            }
         }
     }
 }

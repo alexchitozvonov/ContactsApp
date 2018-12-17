@@ -17,7 +17,7 @@ namespace ContactsApp
         /// <summary>
         /// Регулярка для e-mail.
         /// </summary>
-        private static readonly Regex EmailRegex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+        public static readonly Regex EmailRegex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
 
         /// <summary>
         /// Дата рождения.
@@ -134,6 +134,29 @@ namespace ContactsApp
                 _email = value;
             }
         }
+
+        /// <summary>
+        /// Конструктор по умолчанию.
+        /// </summary>
+        public Contact()
+        {
+            this.Email = "aleksandrr_nnn@gmail.com";
+            Name = "Alex";
+            Surname = "Chistozvonov";
+            DateOfBirthday = DateTime.Now.AddYears(-2);
+            Phone = "89039549459";
+            this.VkId = "alex_chistozvonov";
+        }
+
+        /// <summary>
+        /// Конструктор.
+        /// </summary>
+        /// <param name="name">Имя.</param>
+        /// <param name="surname">Фамилия.</param>
+        /// <param name="burthday">День рождение.</param>
+        /// <param name="phone">Номер телефона.</param>
+        /// <param name="email">E-mail.</param>
+        /// <param name="VkId">vk.com.</param>
         public Contact(string name, string surname, DateTime burthday,
             string phone, string email, string VkId)
         {

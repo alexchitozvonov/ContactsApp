@@ -100,5 +100,16 @@ namespace ContactsApp.UI.Controls
                 UpdateContacts();
             }
         }
+
+        public void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form.ActiveForm.Close();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var aboutForm = new AboutForm();
+            aboutForm.Show();
+        }
     }
 }

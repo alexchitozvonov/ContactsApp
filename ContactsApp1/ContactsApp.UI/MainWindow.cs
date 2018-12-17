@@ -30,15 +30,20 @@ namespace ContactsApp.UI
            // list.Add(Contact);
            // var _project = new Project(list);
             ProjectControl.Project = _project;
-            ProjectControl.SelectedContactChanged += (sender, args) => ContactControl.UpdateData(ProjectControl.SelectedContact); 
-
+            ProjectControl.SelectedContactChanged += (sender, args) => ContactControl.UpdateData(ProjectControl.SelectedContact);
             Closing += (sender, args) => projectManager.SaveToFile(_project);
+            string birthdayed="Сегодня день рождения у:";
+            foreach (var contact in _project.Contacts)
+            {
+                if (contact.DateOfBirthday.Day == DateTime.Now.Day && contact.DateOfBirthday.Month == DateTime.Now.Month)
+                {
+                    birthdayed += $"{contact.Surname},";
+                }
+            }
+            BirthdayTextBox.Text = birthdayed;
         }
 
-        private void ContactControl_Load(object sender, EventArgs e)
-        {
-            
-        }
+
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -47,5 +52,6 @@ namespace ContactsApp.UI
             //        "ContactApp.contacts"));
            // projectManager.SaveToFile(_project);
         }
+
     }
 }

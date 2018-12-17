@@ -18,6 +18,11 @@ namespace ContactsApp.UI
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Конструктор формы.
+        /// </summary>
+        /// <param name="contact"></param>
         public AddForm(Contact contact)
         {
             InitializeComponent();
@@ -36,6 +41,9 @@ namespace ContactsApp.UI
 
         private Contact _contact;
         
+        /// <summary>
+        /// Свойство Контакт.
+        /// </summary>
         public Contact Contact
         {
             private set
@@ -47,6 +55,12 @@ namespace ContactsApp.UI
                 return _contact;
             }
         }
+
+        /// <summary>
+        /// Обработка кнопки ОК.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OkButton_Click(object sender, EventArgs e)
         {
             var contact = new Contact(this.contactControl.NameTextBox.Text, 
