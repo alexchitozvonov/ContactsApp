@@ -12,7 +12,7 @@ namespace ContactsApp
         /// <summary>
         /// Регулярка для телефона.
         /// </summary>
-        public static readonly Regex PhoneRegex = new Regex(@"[+7|8]\d{10}");
+        public static readonly Regex PhoneRegex = new Regex(@"^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$");
 
         /// <summary>
         /// Регулярка для e-mail.
@@ -130,7 +130,6 @@ namespace ContactsApp
                 if (!EmailRegex.IsMatch(value))
                     throw new ArgumentException("Формат E-mail не соответствует формату");
 
-
                 _email = value;
             }
         }
@@ -157,13 +156,13 @@ namespace ContactsApp
         /// <param name="phone">Номер телефона.</param>
         /// <param name="email">E-mail.</param>
         /// <param name="VkId">vk.com.</param>
-        public Contact(string name, string surname, DateTime burthday,
+        public Contact(string name, string surname, DateTime birthday,
             string phone, string email, string VkId)
         {
             this.Email = email;
             Name = name;
             Surname = surname;
-            DateOfBirthday = burthday;
+            DateOfBirthday = birthday;
             Phone = phone;
             this.VkId = VkId; 
         }
