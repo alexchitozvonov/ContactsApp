@@ -9,7 +9,9 @@ namespace ContactsApp.UnitTests
     [TestFixture]
     public class ContactTest
     {
-
+        /// <summary>
+        /// Тестирование конструктора.
+        /// </summary>
         [Test(Description = "Тестирование конструктора.")]
         public void TestConstructor()
         {
@@ -30,6 +32,9 @@ namespace ContactsApp.UnitTests
             Assert.AreEqual(vk, contact.VkId, "Contact() Конструктор не присваивает VkId.");
         }
 
+        /// <summary>
+        /// Тестирование метода ToString().
+        /// </summary>
         [Test(Description = "Тестирование метода ToString().")]
         public void TestToString()
         {
@@ -45,6 +50,9 @@ namespace ContactsApp.UnitTests
             Assert.AreEqual(expected, actual, "Contact->ToString() возвращает неправильное значение.");
         }
 
+        /// <summary>
+        /// Присваивание верной DateOfBirthday.
+        /// </summary>
         [Test(Description = "Присваивание верной DateOfBirthday.")]
         public void TestDateOfBirthday_CorrectValue()
         {
@@ -57,6 +65,9 @@ namespace ContactsApp.UnitTests
             Assert.AreEqual(expected,actual,"Contact->DateOfBirthday возвращает неправильное значение.");
         }
 
+        /// <summary>
+        /// Присваивание DateOfBirthday будущего времени.
+        /// </summary>
         [Test(Description = "Присваивание DateOfBirthday будущего времени.")]
         public void TestDateOfBirthday_FutureValue()
         {
@@ -68,6 +79,9 @@ namespace ContactsApp.UnitTests
                 "Contact->DateOfBirthday не возвращает исключение при дате больше Now.");
         }
 
+        /// <summary>
+        /// Присваивание DateOfBirthday -121 год от текущей даты.
+        /// </summary>
         [Test(Description = "Присваивание DateOfBirthday -121 год от текущей даты.")]
         public void TestDateOfBirthday_MinDate()
         {
@@ -78,7 +92,10 @@ namespace ContactsApp.UnitTests
             Assert.Throws<ArgumentException>(() => { contact.DateOfBirthday = wrontDateTime; },
                 "Contact->DateOfBirthday не возвращает исключение при дате больше 120 года.");
         }
-        
+
+        /// <summary>
+        /// Присваивание Name корректного значения.
+        /// </summary>
         [Test(Description = "Присваивание Name корректного значения.")]
         public void TestName_CorrectValue()
         {
@@ -91,6 +108,9 @@ namespace ContactsApp.UnitTests
             Assert.AreEqual(expected, actual, "Contact->Name возвращает неправильное значение.");
         }
 
+        /// <summary>
+        /// Присваивание Name null значения.
+        /// </summary>
         [Test(Description = "Присваивание Name null значения.")]
         public void TestName_NullValue()
         {
@@ -100,6 +120,9 @@ namespace ContactsApp.UnitTests
                 "Contact->Name не возвращает исключение при пустой строке.");
         }
 
+        /// <summary>
+        /// Присваивание Name пустого значения.
+        /// </summary>
         [Test(Description = "Присваивание Name пустого значения.")]
         public void TestName_WhiteSpaceValue()
         {
@@ -111,6 +134,9 @@ namespace ContactsApp.UnitTests
                 "Contact->Name не возвращает исключение при пустой строке с пробелом.");
         }
 
+        /// <summary>
+        /// Присваивание Name слишком длинного значения.
+        /// </summary>
         [Test(Description = "Присваивание Name слишком длинного значения.")]
         public void TestName_LongValue()
         {
@@ -122,6 +148,9 @@ namespace ContactsApp.UnitTests
                 "Contact->Name не возвращает исключение при длинной строке.");
         }
 
+        /// <summary>
+        /// Присваивание Surname корректного значения.
+        /// </summary>
         [Test(Description = "Присваивание Surname корректного значения.")]
         public void TestSurname_CorrectValue()
         {
@@ -134,6 +163,9 @@ namespace ContactsApp.UnitTests
             Assert.AreEqual(expected, actual, "Contact->Surname возвращает неправильное значение.");
         }
 
+        /// <summary>
+        /// Присваивание Surname null значения.
+        /// </summary>
         [Test(Description = "Присваивание Surname null значения.")]
         public void TestSurname_NullValue()
         {
@@ -143,6 +175,9 @@ namespace ContactsApp.UnitTests
                 "Contact->Surname не возвращает исключение при пустой строке.");
         }
 
+        /// <summary>
+        /// Присваивание Surname пустого значения.
+        /// </summary>
         [Test(Description = "Присваивание Surname пустого значения.")]
         public void TestSurname_WhiteSpaceValue()
         {
@@ -154,6 +189,9 @@ namespace ContactsApp.UnitTests
                 "Contact->Surname не возвращает исключение при пустой строке с пробелом.");
         }
 
+        /// <summary>
+        /// Присваивание Surname длинного значения.
+        /// </summary>
         [Test(Description = "Присваивание Surname длинного значения.")]
         public void TestSurname_LongValue()
         {
@@ -165,6 +203,9 @@ namespace ContactsApp.UnitTests
                 "Contact->Surname не возвращает исключение при длинной строке.");
         }
 
+        /// <summary>
+        /// Присваивание VkId корректного значения.
+        /// </summary>
         [Test(Description = "Присваивание VkId корректного значения.")]
         public void TestVkId_CorrectValue()
         {
@@ -177,6 +218,9 @@ namespace ContactsApp.UnitTests
             Assert.AreEqual(expected, actual, "Contact->VkId возвращает неправильное значение.");
         }
 
+        /// <summary>
+        /// Присваивание Phone корректного значения.
+        /// </summary>
         [Test(Description = "Присваивание Phone корректного значения.")]
         public void TestPhone_CorrectValue()
         {
@@ -189,6 +233,9 @@ namespace ContactsApp.UnitTests
             Assert.AreEqual(expected, actual, "Contact->Phone возвращает неправильное значение.");
         }
 
+        /// <summary>
+        /// Присваивание Phone значения, где первый символ -.
+        /// </summary>
         [Test(Description = "Присваивание Phone значения, где первый символ -.")]
         public void TestPhone_IncorrectFirst()
         {
@@ -200,6 +247,9 @@ namespace ContactsApp.UnitTests
                 "Contact->Phone не возвращает исключение при первом символе в строке.");
         }
 
+        /// <summary>
+        /// Присваивание Phone значения с буквой.
+        /// </summary>
         [Test(Description = "Присваивание Phone значения с буквой.")]
         public void TestPhone_IncorrectSymbol()
         {
@@ -211,6 +261,9 @@ namespace ContactsApp.UnitTests
                 "Contact->Phone не возвращает исключение при букве в строке.");
         }
 
+        /// <summary>
+        /// Присваивание Phone короткого значения.
+        /// </summary>
         [Test(Description = "Присваивание Phone короткого значения.")]
         public void TestPhone_ShortLength()
         {
@@ -222,6 +275,9 @@ namespace ContactsApp.UnitTests
                 "Contact->Phone не возвращает исключение при вводе короткого номера.");
         }
 
+        /// <summary>
+        /// Присваивание Phone длинного значения.
+        /// </summary>
         [Test(Description = "Присваивание Phone длинного значения.")]
         public void TestPhone_LongLength()
         {
@@ -233,6 +289,9 @@ namespace ContactsApp.UnitTests
                 "Contact->Phone не возвращает исключение при вводе длинного номера.");
         }
 
+        /// <summary>
+        /// Присваивание Email корректного значения.
+        /// </summary>
         [Test(Description = "Присваивание Email корректного значения.")]
         public void TestEmail_CorrectValue()
         {
@@ -245,6 +304,9 @@ namespace ContactsApp.UnitTests
             Assert.AreEqual(expected, actual, "Contact->Email возвращает неправильное значение.");
         }
 
+        /// <summary>
+        /// Присваивание Email значения с двумя @.
+        /// </summary>
         [Test(Description = "Присваивание Email значения с двумя @.")]
         public void TestEmail_IncorrectA()
         {
@@ -256,6 +318,9 @@ namespace ContactsApp.UnitTests
                 "Contact->Email не возвращает исключение при присвоении email с двумя @.");
         }
 
+        /// <summary>
+        /// Присваивание Email значения без доменной зоны.
+        /// </summary>
         [Test(Description = "Присваивание Email значения без доменной зоны.")]
         public void TestEmail_IncorrectDomainZone()
         {
@@ -267,6 +332,9 @@ namespace ContactsApp.UnitTests
                 "Contact->Email не возвращает исключение при присвоении email без доменной зоны.");
         }
 
+        /// <summary>
+        /// Присваивание Email значения без домена.
+        /// </summary>
         [Test(Description = "Присваивание Email значения без домена.")]
         public void TestEmail_WithoutDomain()
         {
@@ -278,6 +346,9 @@ namespace ContactsApp.UnitTests
                 "Contact->Email не возвращает исключение при присвоении email без домена.");
         }
 
+        /// <summary>
+        /// Присваивание Email значения без логина.
+        /// </summary>
         [Test(Description = "Присваивание Email значения без логина.")]
         public void TestEmail_WithoutLogin()
         {
