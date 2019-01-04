@@ -10,6 +10,11 @@ namespace ContactsApp.UnitTests
     public class ContactTest
     {
         /// <summary>
+        /// Тестовый контакт.
+        /// </summary>
+        private readonly Contact _contact = new Contact();
+
+        /// <summary>
         /// Тестирование конструктора.
         /// </summary>
         [Test(Description = "Тестирование конструктора.")]
@@ -42,10 +47,9 @@ namespace ContactsApp.UnitTests
             var surname = "Surname";
             var expected = $"{name} {surname}";
 
-            var contact = new Contact();
-            contact.Name = name;
-            contact.Surname = surname;
-            var actual = contact.ToString();
+            _contact.Name = name;
+            _contact.Surname = surname;
+            var actual = _contact.ToString();
 
             Assert.AreEqual(expected, actual, "Contact->ToString() возвращает неправильное значение.");
         }
@@ -57,10 +61,9 @@ namespace ContactsApp.UnitTests
         public void TestDateOfBirthday_CorrectValue()
         {
             var expected = new DateTime(1997, 05, 06);
-            
-            var contact = new Contact();
-            contact.DateOfBirthday = expected;
-            var actual = contact.DateOfBirthday;
+
+            _contact.DateOfBirthday = expected;
+            var actual = _contact.DateOfBirthday;
 
             Assert.AreEqual(expected,actual,"Contact->DateOfBirthday возвращает неправильное значение.");
         }
@@ -73,9 +76,7 @@ namespace ContactsApp.UnitTests
         {
             var wrontDateTime = DateTime.Now.AddDays(1);
 
-            var contact = new Contact();
-
-            Assert.Throws<ArgumentException>(() => { contact.DateOfBirthday = wrontDateTime; },
+            Assert.Throws<ArgumentException>(() => { _contact.DateOfBirthday = wrontDateTime; },
                 "Contact->DateOfBirthday не возвращает исключение при дате больше Now.");
         }
 
@@ -87,9 +88,7 @@ namespace ContactsApp.UnitTests
         {
             var wrontDateTime = DateTime.Now.AddYears(-121);
 
-            var contact = new Contact();
-
-            Assert.Throws<ArgumentException>(() => { contact.DateOfBirthday = wrontDateTime; },
+            Assert.Throws<ArgumentException>(() => { _contact.DateOfBirthday = wrontDateTime; },
                 "Contact->DateOfBirthday не возвращает исключение при дате больше 120 года.");
         }
 
@@ -101,9 +100,8 @@ namespace ContactsApp.UnitTests
         {
             var expected = "Александр";
 
-            var contact = new Contact();
-            contact.Name = expected;
-            var actual = contact.Name;
+            _contact.Name = expected;
+            var actual = _contact.Name;
 
             Assert.AreEqual(expected, actual, "Contact->Name возвращает неправильное значение.");
         }
@@ -114,9 +112,7 @@ namespace ContactsApp.UnitTests
         [Test(Description = "Присваивание Name null значения.")]
         public void TestName_NullValue()
         {
-            var contact = new Contact();
-
-            Assert.Throws<ArgumentException>(() => { contact.Name = null; },
+            Assert.Throws<ArgumentException>(() => { _contact.Name = null; },
                 "Contact->Name не возвращает исключение при пустой строке.");
         }
 
@@ -128,9 +124,7 @@ namespace ContactsApp.UnitTests
         {
             var whitespace = " ";
 
-            var contact = new Contact();
-
-            Assert.Throws<ArgumentException>(() => { contact.Name = whitespace; },
+            Assert.Throws<ArgumentException>(() => { _contact.Name = whitespace; },
                 "Contact->Name не возвращает исключение при пустой строке с пробелом.");
         }
 
@@ -142,9 +136,7 @@ namespace ContactsApp.UnitTests
         {
             var longStr = "IvanInvanIvanIvanIvan";
 
-            var contact = new Contact();
-
-            Assert.Throws<ArgumentException>(() => { contact.Name = longStr; },
+            Assert.Throws<ArgumentException>(() => { _contact.Name = longStr; },
                 "Contact->Name не возвращает исключение при длинной строке.");
         }
 
@@ -156,9 +148,8 @@ namespace ContactsApp.UnitTests
         {
             var expected = "Петров";
 
-            var contact = new Contact();
-            contact.Surname = expected;
-            var actual = contact.Surname;
+            _contact.Surname = expected;
+            var actual = _contact.Surname;
 
             Assert.AreEqual(expected, actual, "Contact->Surname возвращает неправильное значение.");
         }
@@ -169,9 +160,7 @@ namespace ContactsApp.UnitTests
         [Test(Description = "Присваивание Surname null значения.")]
         public void TestSurname_NullValue()
         {
-            var contact = new Contact();
-
-            Assert.Throws<ArgumentException>(() => { contact.Surname = null; },
+            Assert.Throws<ArgumentException>(() => { _contact.Surname = null; },
                 "Contact->Surname не возвращает исключение при пустой строке.");
         }
 
@@ -183,9 +172,7 @@ namespace ContactsApp.UnitTests
         {
             var whitespace = " ";
 
-            var contact = new Contact();
-
-            Assert.Throws<ArgumentException>(() => { contact.Surname = whitespace; },
+            Assert.Throws<ArgumentException>(() => { _contact.Surname = whitespace; },
                 "Contact->Surname не возвращает исключение при пустой строке с пробелом.");
         }
 
@@ -197,9 +184,7 @@ namespace ContactsApp.UnitTests
         {
             var longStr = "IvanInvanIvanIvanIvanIvanInvanIvanIvanIvan";
 
-            var contact = new Contact();
-
-            Assert.Throws<ArgumentException>(() => { contact.Surname = longStr; },
+            Assert.Throws<ArgumentException>(() => { _contact.Surname = longStr; },
                 "Contact->Surname не возвращает исключение при длинной строке.");
         }
 
@@ -211,9 +196,8 @@ namespace ContactsApp.UnitTests
         {
             var expected = "test_vk";
 
-            var contact = new Contact();
-            contact.VkId = expected;
-            var actual = contact.VkId;
+            _contact.VkId = expected;
+            var actual = _contact.VkId;
 
             Assert.AreEqual(expected, actual, "Contact->VkId возвращает неправильное значение.");
         }
@@ -226,9 +210,8 @@ namespace ContactsApp.UnitTests
         {
             var expected = "+79991234567";
 
-            var contact = new Contact();
-            contact.Phone = expected;
-            var actual = contact.Phone;
+            _contact.Phone = expected;
+            var actual = _contact.Phone;
 
             Assert.AreEqual(expected, actual, "Contact->Phone возвращает неправильное значение.");
         }
@@ -241,9 +224,7 @@ namespace ContactsApp.UnitTests
         {
             var num = "-19991234567";
 
-            var contact = new Contact();
-
-            Assert.Throws<ArgumentException>(() => { contact.Phone = num; },
+            Assert.Throws<ArgumentException>(() => { _contact.Phone = num; },
                 "Contact->Phone не возвращает исключение при первом символе в строке.");
         }
 
@@ -255,9 +236,7 @@ namespace ContactsApp.UnitTests
         {
             var num = "+799912E4567";
 
-            var contact = new Contact();
-
-            Assert.Throws<ArgumentException>(() => { contact.Phone = num; },
+            Assert.Throws<ArgumentException>(() => { _contact.Phone = num; },
                 "Contact->Phone не возвращает исключение при букве в строке.");
         }
 
@@ -269,9 +248,7 @@ namespace ContactsApp.UnitTests
         {
             var num = "+7996938";
 
-            var contact = new Contact();
-
-            Assert.Throws<ArgumentException>(() => { contact.Phone = num; },
+            Assert.Throws<ArgumentException>(() => { _contact.Phone = num; },
                 "Contact->Phone не возвращает исключение при вводе короткого номера.");
         }
 
@@ -283,9 +260,7 @@ namespace ContactsApp.UnitTests
         {
             var num = "+799693811111111";
 
-            var contact = new Contact();
-
-            Assert.Throws<ArgumentException>(() => { contact.Phone = num; },
+            Assert.Throws<ArgumentException>(() => { _contact.Phone = num; },
                 "Contact->Phone не возвращает исключение при вводе длинного номера.");
         }
 
@@ -297,9 +272,8 @@ namespace ContactsApp.UnitTests
         {
             var expected = "ivanov.i.i@mail.ru";
 
-            var contact = new Contact();
-            contact.Email = expected;
-            var actual = contact.Email;
+            _contact.Email = expected;
+            var actual = _contact.Email;
 
             Assert.AreEqual(expected, actual, "Contact->Email возвращает неправильное значение.");
         }
@@ -312,9 +286,7 @@ namespace ContactsApp.UnitTests
         {
             var email = "ivanov.i.i@@mail.ru";
 
-            var contact = new Contact();
-
-            Assert.Throws<ArgumentException>(() => { contact.Email = email; },
+            Assert.Throws<ArgumentException>(() => { _contact.Email = email; },
                 "Contact->Email не возвращает исключение при присвоении email с двумя @.");
         }
 
@@ -326,9 +298,7 @@ namespace ContactsApp.UnitTests
         {
             var email = "ivanov.i.i@mail";
 
-            var contact = new Contact();
-
-            Assert.Throws<ArgumentException>(() => { contact.Email = email; },
+            Assert.Throws<ArgumentException>(() => { _contact.Email = email; },
                 "Contact->Email не возвращает исключение при присвоении email без доменной зоны.");
         }
 
@@ -340,9 +310,7 @@ namespace ContactsApp.UnitTests
         {
             var email = "ivanov.i.i@";
 
-            var contact = new Contact();
-
-            Assert.Throws<ArgumentException>(() => { contact.Email = email; },
+            Assert.Throws<ArgumentException>(() => { _contact.Email = email; },
                 "Contact->Email не возвращает исключение при присвоении email без домена.");
         }
 
@@ -354,9 +322,7 @@ namespace ContactsApp.UnitTests
         {
             var email = "@mail.ru";
 
-            var contact = new Contact();
-
-            Assert.Throws<ArgumentException>(() => { contact.Email = email; },
+            Assert.Throws<ArgumentException>(() => { _contact.Email = email; },
                 "Contact->Email не возвращает исключение при присвоении email без логина.");
         }
     }

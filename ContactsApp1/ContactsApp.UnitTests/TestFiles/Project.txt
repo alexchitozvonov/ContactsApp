@@ -1,0 +1,12 @@
+{
+  "Contacts": [
+    {
+      "VkId": "vkid",
+      "DateOfBirthday": "2019-01-01T22:59:29",
+      "Name": "Name",
+      "Surname": "Surname",
+      "Phone": "8111111",
+      "Email": "email@email.com"
+    }
+  ]
+}
