@@ -47,10 +47,10 @@ namespace ContactsApp.UI
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //var projectManager =
-            //    new ProjectManager(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-            //        "ContactApp.contacts"));
-           // projectManager.SaveToFile(_project);
+            /*var projectManager =
+                new ProjectManager(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                    "ContactApp.contacts"));
+            projectManager.SaveToFile(_project); */
         }
 
     }

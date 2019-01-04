@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using Newtonsoft.Json;
 
 namespace ContactsApp
@@ -55,6 +56,11 @@ namespace ContactsApp
         /// <returns>Проект.</returns>
         public Project LoadFromFile()
         {
+            FileInfo file = new FileInfo(_pathToFile);
+            if (!file.Exists)
+            {
+                return new Project(new List<Contact>());
+            }
             using (var streamReader = new StreamReader(_pathToFile))
             using (var jsonReader = new JsonTextReader(streamReader))
             {
