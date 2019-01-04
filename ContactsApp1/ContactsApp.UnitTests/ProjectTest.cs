@@ -1,7 +1,14 @@
-﻿namespace ContactsApp.UnitTests
+﻿using NUnit.Framework;
+using NUnit.Framework.Internal;
+
+namespace ContactsApp.UnitTests
 {
+    [TestFixture()]
     public class ProjectTest
     {
-        
+        void ProjectConstructorTest()
+        {
+
+        }
     }
 }

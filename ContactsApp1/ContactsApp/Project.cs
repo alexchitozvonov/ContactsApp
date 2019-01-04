@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ContactsApp
 {
@@ -13,6 +14,10 @@ namespace ContactsApp
         /// <param name="contacts">Контакты.</param>
         public Project(List<Contact> contacts)
         {
+            if (contacts == null)
+            {
+                throw new ArgumentException("Contacts не должен быть null.");
+            }
             Contacts = contacts;
         }
 
