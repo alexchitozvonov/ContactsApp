@@ -14,11 +14,7 @@ namespace ContactsApp
         /// <param name="contacts">Контакты.</param>
         public Project(List<Contact> contacts)
         {
-            if (contacts == null)
-            {
-                throw new ArgumentException("Contacts не должен быть null.");
-            }
-            Contacts = contacts;
+            Contacts = contacts ?? throw new ArgumentException("Contacts не должен быть null.");
         }
 
         /// <summary>
@@ -32,15 +28,27 @@ namespace ContactsApp
         /// <param name="contact">Контакт.</param>
         public void AddContact(Contact contact)
         {
+            if (contact == null)
+            {
+                throw new ArgumentException("Contact не должен быть null.");
+            }
             Contacts.Add(contact);
         }
 
         /// <summary>
         /// Удаление контакта.
         /// </summary>
-        /// <param name="contact"></param>
+        /// <param name="contact">Контакт.</param>
         public void RemoveContact(Contact contact)
         {
+            if (contact == null)
+            {
+                throw new ArgumentException("Контакт не должен быть null.");
+            }
+            if (!Contacts.Contains(contact))
+            {
+                throw new ArgumentException("Такого контакта нет в списке.");
+            }
             Contacts.Remove(contact);
         }
     }
