@@ -127,7 +127,7 @@ namespace ContactsApp
             get => _email;
             set
             {
-                if (!EmailRegex.IsMatch(value))
+                if (!EmailRegex.IsMatch(value) && value.Length>0)
                     throw new ArgumentException("Формат E-mail не соответствует формату");
 
                 _email = value;

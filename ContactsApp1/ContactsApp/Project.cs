@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ContactsApp
 {
@@ -51,5 +52,17 @@ namespace ContactsApp
             }
             Contacts.Remove(contact);
         }
+
+        public List<Contact> GetSortedContacts()
+        {
+            return Contacts.OrderBy(o => o.ToString()).ToList();
+        }
+
+        public List<Contact> GetSortedContacts(string filter)
+        {
+            return Contacts.Where(s=>s.ToString().Contains(filter)).OrderBy(o => o.ToString()).ToList();
+        }
+
+
     }
 }

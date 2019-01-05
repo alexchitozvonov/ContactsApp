@@ -21,12 +21,15 @@ namespace ContactsApp.UI.Controls
         /// </summary>
         public event Action<object, SelectedContactChangedEventArgs> SelectedContactChanged;
 
+        private Action UpdateContactsAction;
+
         /// <summary>
         /// Конструктор.
         /// </summary>
         public ProjectControl()
         {
             InitializeComponent();
+            UpdateContactsAction = this.UpdateContacts;
         }
 
         /// <summary>
@@ -38,7 +41,7 @@ namespace ContactsApp.UI.Controls
             set
             {
                 _project = value;
-                UpdateContacts();
+                UpdateContactsAction?.Invoke();
             }
         }
 
@@ -63,7 +66,7 @@ namespace ContactsApp.UI.Controls
         {
             ProjectListBox.Items.Clear();
 
-            _project?.Contacts.ForEach(contact => ProjectListBox.Items.Add(contact));
+            _project?.GetSortedContacts().ForEach(contact => ProjectListBox.Items.Add(contact));
 
             ProjectListBox.Update();
         }
@@ -80,14 +83,14 @@ namespace ContactsApp.UI.Controls
             if (addForm.ShowDialog() == DialogResult.OK)
             {
                 Project.AddContact(addForm.Contact);
-                UpdateContacts();
+                UpdateContactsAction?.Invoke();
             }
         }
 
         private void RemoveContactButton_Click(object sender, EventArgs e)
         {
             Project.RemoveContact(_project.Contacts[ProjectListBox.SelectedIndex]);
-            UpdateContacts();
+            UpdateContactsAction?.Invoke();
         }
 
         private void EditContactButton_Click(object sender, EventArgs e)
@@ -97,7 +100,7 @@ namespace ContactsApp.UI.Controls
             {
                 Project.RemoveContact(_project.Contacts[ProjectListBox.SelectedIndex]);
                 Project.AddContact(addForm.Contact);
-                UpdateContacts();
+                UpdateContactsAction?.Invoke();
             }
         }
 
@@ -110,6 +113,24 @@ namespace ContactsApp.UI.Controls
         {
             var aboutForm = new AboutForm();
             aboutForm.Show();
+        }
+
+        private void FindTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (FindTextBox.Text.Length > 0)
+            {
+                UpdateContactsAction = () =>
+                {
+                    ProjectListBox.Items.Clear();
+                    _project?.GetSortedContacts(FindTextBox.Text).ForEach(contact => ProjectListBox.Items.Add(contact));
+                    ProjectListBox.Update();
+                };
+            }
+            else
+            {
+                UpdateContactsAction = UpdateContacts;
+            }
+            UpdateContactsAction?.Invoke();
         }
     }
 }
