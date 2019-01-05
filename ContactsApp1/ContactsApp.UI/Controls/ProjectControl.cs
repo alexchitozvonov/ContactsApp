@@ -87,10 +87,15 @@ namespace ContactsApp.UI.Controls
             }
         }
 
-        private void RemoveContactButton_Click(object sender, EventArgs e)
+        private void RemoveCurrentContact()
         {
             Project.RemoveContact(_project.Contacts[ProjectListBox.SelectedIndex]);
             UpdateContactsAction?.Invoke();
+        }
+
+        private void RemoveContactButton_Click(object sender, EventArgs e)
+        {
+            RemoveCurrentContact();
         }
 
         private void EditContactButton_Click(object sender, EventArgs e)
@@ -131,6 +136,22 @@ namespace ContactsApp.UI.Controls
                 UpdateContactsAction = UpdateContacts;
             }
             UpdateContactsAction?.Invoke();
+        }
+
+        private void ProjectListBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void ProjectListBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                if (MessageBox.Show("Удалить контакт?", this.Text, MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    RemoveCurrentContact();
+                }
+            }
         }
     }
 }

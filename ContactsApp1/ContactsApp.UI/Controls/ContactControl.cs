@@ -17,9 +17,19 @@ namespace ContactsApp.UI.Controls
       /// <param name="contact"></param>
         public void UpdateData(Contact contact)
         {
+            if (contact == null)
+            {
+                SurnameTextBox.Clear();
+                NameTextBox.Clear();
+                BurthdayDateTimePicker.Value = DateTime.Today;
+                PhoneTextBox.Clear();
+                EmailTextBox.Clear();
+                VkcomTextBox.Clear();
+                return;
+            }
             SurnameTextBox.Text = contact.Surname; 
             NameTextBox.Text = contact.Name;
-            BurthdayDateTimePicker.Value = (System.DateTime)contact.DateOfBirthday;
+            BurthdayDateTimePicker.Value = contact.DateOfBirthday.Date;
             PhoneTextBox.Text = contact.Phone;
             EmailTextBox.Text = contact.Email;
             VkcomTextBox.Text = contact.VkId;
