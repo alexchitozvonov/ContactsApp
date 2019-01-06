@@ -28,20 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.contactControl = new ContactsApp.UI.Controls.ContactControl();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddForm));
             this.OkButton = new System.Windows.Forms.Button();
             this.MyCancelButton = new System.Windows.Forms.Button();
+            this.contactControl = new ContactsApp.UI.Controls.ContactControl();
             this.SuspendLayout();
-            // 
-            // contactControl
-            // 
-            this.contactControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.contactControl.Location = new System.Drawing.Point(0, 0);
-            this.contactControl.Name = "contactControl";
-            this.contactControl.Size = new System.Drawing.Size(394, 175);
-            this.contactControl.TabIndex = 0;
             // 
             // OkButton
             // 
@@ -65,6 +56,16 @@
             this.MyCancelButton.UseVisualStyleBackColor = true;
             this.MyCancelButton.Click += new System.EventHandler(this.MyCancelButton_Click);
             // 
+            // contactControl
+            // 
+            this.contactControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.contactControl.Location = new System.Drawing.Point(0, 0);
+            this.contactControl.Name = "contactControl";
+            this.contactControl.Size = new System.Drawing.Size(394, 175);
+            this.contactControl.TabIndex = 0;
+            // 
             // AddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -73,6 +74,7 @@
             this.Controls.Add(this.MyCancelButton);
             this.Controls.Add(this.OkButton);
             this.Controls.Add(this.contactControl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(300, 241);
             this.Name = "AddForm";
             this.Text = "AddForm";

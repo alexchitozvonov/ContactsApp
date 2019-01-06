@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.BirthdayTextBox = new System.Windows.Forms.TextBox();
             this.ProjectControl = new ContactsApp.UI.Controls.ProjectControl();
@@ -74,6 +75,7 @@
             this.Controls.Add(this.BirthdayTextBox);
             this.Controls.Add(this.ProjectControl);
             this.Controls.Add(this.ContactControl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(776, 399);
             this.Name = "MainWindow";
             this.Text = "ContactsApp";
