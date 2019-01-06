@@ -76,7 +76,7 @@
             this.Controls.Add(this.ContactControl);
             this.MinimumSize = new System.Drawing.Size(776, 399);
             this.Name = "MainWindow";
-            this.Text = "Form1";
+            this.Text = "ContactsApp";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
