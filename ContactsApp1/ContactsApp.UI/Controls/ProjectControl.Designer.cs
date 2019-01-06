@@ -75,7 +75,6 @@ namespace ContactsApp.UI.Controls
             this.ProjectListBox.TabIndex = 2;
             this.ProjectListBox.SelectedValueChanged += new System.EventHandler(this.ProjectListBox_SelectedValueChanged);
             this.ProjectListBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ProjectListBox_KeyDown);
-            this.ProjectListBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ProjectListBox_KeyPress);
             // 
             // AddContactButton
             // 

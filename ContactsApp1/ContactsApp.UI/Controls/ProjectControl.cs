@@ -4,6 +4,9 @@ using ContactsApp.UI.CustomEventArgs;
 
 namespace ContactsApp.UI.Controls
 {
+    /// <summary>
+    /// Элемент управления проектом.
+    /// </summary>
     public partial class ProjectControl : UserControl
     {
         /// <summary>
@@ -21,6 +24,9 @@ namespace ContactsApp.UI.Controls
         /// </summary>
         public event Action<object, SelectedContactChangedEventArgs> SelectedContactChanged;
 
+        /// <summary>
+        /// Обновляет список контактов.
+        /// </summary>
         private Action UpdateContactsAction;
 
         /// <summary>
@@ -71,12 +77,21 @@ namespace ContactsApp.UI.Controls
             ProjectListBox.Update();
         }
 
-
+        /// <summary>
+        /// Устанавливает актуальное значение поля SelectedContact.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ProjectListBox_SelectedValueChanged(object sender, EventArgs e)
         {
             SelectedContact = (Contact) ProjectListBox.SelectedItem;
         }
         
+        /// <summary>
+        /// Создает диалоговое окно добавления контакта.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddContactButton_Click(object sender, EventArgs e)
         {
             var addForm = new AddForm();
@@ -87,17 +102,30 @@ namespace ContactsApp.UI.Controls
             }
         }
 
+        /// <summary>
+        /// Удаляет текущий контакт.
+        /// </summary>
         private void RemoveCurrentContact()
         {
             Project.RemoveContact(_project.Contacts[ProjectListBox.SelectedIndex]);
             UpdateContactsAction?.Invoke();
         }
 
+        /// <summary>
+        /// Нажатие на кнопку удаления контакта.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RemoveContactButton_Click(object sender, EventArgs e)
         {
             RemoveCurrentContact();
         }
 
+        /// <summary>
+        /// Создает диалог редактирования контакта.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EditContactButton_Click(object sender, EventArgs e)
         {
             if (ProjectListBox.SelectedItem == null)
@@ -114,17 +142,32 @@ namespace ContactsApp.UI.Controls
             }
         }
 
+        /// <summary>
+        /// Закрывает активную форму.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form.ActiveForm.Close();
         }
 
+        /// <summary>
+        /// Показывает окно О программе.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var aboutForm = new AboutForm();
             aboutForm.Show();
         }
 
+        /// <summary>
+        /// Фильтрует элементы по строке.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FindTextBox_TextChanged(object sender, EventArgs e)
         {
             if (FindTextBox.Text.Length > 0)
@@ -143,11 +186,11 @@ namespace ContactsApp.UI.Controls
             UpdateContactsAction?.Invoke();
         }
 
-        private void ProjectListBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
-        }
-
+        /// <summary>
+        /// Позволяет удалить контакт по клавише Del.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ProjectListBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete)

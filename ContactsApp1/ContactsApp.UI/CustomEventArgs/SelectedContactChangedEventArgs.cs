@@ -23,6 +23,7 @@ namespace ContactsApp.UI.CustomEventArgs
         /// Новый выбранный контакт.
         /// </summary>
         public Contact NewSelectedContact { get; }
+
         /// <summary>
         /// Старый выбранный контакт.
         /// </summary>

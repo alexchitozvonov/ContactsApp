@@ -4,8 +4,14 @@ using System.Windows.Forms;
 
 namespace ContactsApp.UI.Controls
 {
+    /// <summary>
+    /// Создает новый контакт с указанными данными.
+    /// </summary>
     public partial class ContactControl : UserControl
     {
+        /// <summary>
+        /// Конструктор.
+        /// </summary>
         public ContactControl()
         {
             InitializeComponent();
@@ -14,7 +20,7 @@ namespace ContactsApp.UI.Controls
       /// <summary>
       /// Обновить данные в полях.
       /// </summary>
-      /// <param name="contact"></param>
+      /// <param name="contact">Контакт, данные которого будут в полях.</param>
         public void UpdateData(Contact contact)
         {
             if (contact == null)
@@ -75,6 +81,11 @@ namespace ContactsApp.UI.Controls
             }
         }
 
+        /// <summary>
+        /// Подсказка для Surname, при изменении поля.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SurnameTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -90,6 +101,11 @@ namespace ContactsApp.UI.Controls
             }
         }
 
+        /// <summary>
+        /// Подсказка для Name при изменении поля.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NameTextBox_TextChanged(object sender, EventArgs e)
         {
             try

@@ -11,18 +11,25 @@ using ContactsApp;
 
 namespace ContactsApp.UI
 {
+    /// <summary>
+    /// Форма добавления контакта.
+    /// </summary>
     public partial class AddForm : Form
     {
+        private Contact _contact;
 
+        /// <summary>
+        /// Конструктор без параметров.
+        /// </summary>
         public AddForm()
         {
             InitializeComponent();
         }
 
         /// <summary>
-        /// Конструктор формы.
+        /// Конструктор формы, позволяет заполнить поля данными.
         /// </summary>
-        /// <param name="contact"></param>
+        /// <param name="contact">Контакт, данные которого будут занесены в форму.</param>
         public AddForm(Contact contact)
         {
             InitializeComponent();
@@ -34,13 +41,16 @@ namespace ContactsApp.UI
             this.contactControl.VkcomTextBox.Text = contact.VkId;
         }
 
+        /// <summary>
+        /// Нажатие кнопки отмена.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MyCancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private Contact _contact;
-        
         /// <summary>
         /// Свойство Контакт.
         /// </summary>

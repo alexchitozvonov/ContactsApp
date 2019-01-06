@@ -53,11 +53,20 @@ namespace ContactsApp
             Contacts.Remove(contact);
         }
 
+        /// <summary>
+        /// Позволяет получить список контактов отсортированный по алфавиту.
+        /// </summary>
+        /// <returns>Список контактов отсортированный по алфавиту.</returns>
         public List<Contact> GetSortedContacts()
         {
             return Contacts.OrderBy(o => o.ToString()).ToList();
         }
 
+        /// <summary>
+        /// Позволяет получить список контактов,строковое представление которых содержит строку, отсортированный по алфавиту.
+        /// </summary>
+        /// <param name="filter">Строка, которую должно содержать строковое представление контакта.</param>
+        /// <returns>Отфильтрованный список контактов по алфавиту, строковое представление которых содержит строку.</returns>
         public List<Contact> GetSortedContacts(string filter)
         {
             return Contacts.Where(s=>s.ToString().Contains(filter)).OrderBy(o => o.ToString()).ToList();
