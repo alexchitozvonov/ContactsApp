@@ -100,12 +100,17 @@ namespace ContactsApp.UI.Controls
 
         private void EditContactButton_Click(object sender, EventArgs e)
         {
-            var addForm = new AddForm(_project.Contacts[ProjectListBox.SelectedIndex]);
+            if (ProjectListBox.SelectedItem == null)
+            {
+                return;
+            }
+            var addForm = new AddForm(ProjectListBox.SelectedItem as Contact);
             if (addForm.ShowDialog() == DialogResult.OK)
             {
                 Project.RemoveContact(_project.Contacts[ProjectListBox.SelectedIndex]);
                 Project.AddContact(addForm.Contact);
                 UpdateContactsAction?.Invoke();
+                ProjectListBox.SelectedItem = addForm.Contact;
             }
         }
 
