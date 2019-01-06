@@ -74,5 +74,35 @@ namespace ContactsApp.UI.Controls
                 EmailTextBox.BackColor = Color.White;
             }
         }
+
+        private void SurnameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Contact.CheckSurname(SurnameTextBox.Text);
+                SurnameTextBox.BackColor = Color.White;
+            }
+            catch (ArgumentException exception)
+            {
+                var tooltip = new ToolTip();
+                SurnameTextBox.BackColor = Color.FromArgb(255, 140, 105);
+                tooltip.SetToolTip(this.SurnameTextBox, exception.Message);
+            }
+        }
+
+        private void NameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Contact.CheckName(NameTextBox.Text);
+                NameTextBox.BackColor = Color.White;
+            }
+            catch (ArgumentException exception)
+            {
+                var tooltip = new ToolTip();
+                NameTextBox.BackColor = Color.FromArgb(255, 140, 105);
+                tooltip.SetToolTip(this.NameTextBox, exception.Message);
+            }
+        }
     }
 }

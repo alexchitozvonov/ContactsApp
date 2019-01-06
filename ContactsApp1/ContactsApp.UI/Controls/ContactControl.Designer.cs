@@ -52,6 +52,7 @@ namespace ContactsApp.UI.Controls
             this.SurnameTextBox.Name = "SurnameTextBox";
             this.SurnameTextBox.Size = new System.Drawing.Size(506, 20);
             this.SurnameTextBox.TabIndex = 16;
+            this.SurnameTextBox.TextChanged += new System.EventHandler(this.SurnameTextBox_TextChanged);
             // 
             // BurthdayDateTimePicker
             // 
@@ -128,6 +129,7 @@ namespace ContactsApp.UI.Controls
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(506, 20);
             this.NameTextBox.TabIndex = 17;
+            this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
             // 
             // EmailTextBox
             // 

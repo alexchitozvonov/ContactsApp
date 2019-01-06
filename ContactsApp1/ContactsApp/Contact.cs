@@ -76,11 +76,7 @@ namespace ContactsApp
             get => _name;
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentException("Имя не может быть пустым");
-
-                if (value.Length >= 20)
-                    throw new ArgumentException("Имя не может быть больше 20 символов");
+                CheckName(value);
 
                 _name = value;
             }
@@ -94,11 +90,7 @@ namespace ContactsApp
             get => _surname;
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentException("Фамилия не может быть пустой");
-
-                if (value.Length >= 40)
-                    throw new ArgumentException("Фамилия не может быть больше 40 символов");
+                CheckSurname(value);
 
                 _surname = value;
             }
@@ -175,5 +167,33 @@ namespace ContactsApp
         {
             return $"{Name} {Surname}";
         }
+
+        /// <summary>
+        /// Проверяет имя, в случае ошибки создает исключение.
+        /// </summary>
+        /// <param name="value">Имя.</param>
+        public static void CheckName(string value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+                throw new ArgumentException("Имя не может быть пустым");
+
+            if (value.Length >= 20)
+                throw new ArgumentException("Имя не может быть больше 20 символов");
+        }
+
+        /// <summary>
+        /// Проверяет фамилию, в случае ошибки создает исключение.
+        /// </summary>
+        /// <param name="value">Фамилия.</param>
+        public static void CheckSurname(string value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+                throw new ArgumentException("Фамилия не может быть пустой");
+
+            if (value.Length >= 50)
+                throw new ArgumentException("Фамилия не может быть больше 50 символов");
+        }
+
+
     }
 }

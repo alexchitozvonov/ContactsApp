@@ -63,17 +63,23 @@ namespace ContactsApp.UI
         /// <param name="e"></param>
         private void OkButton_Click(object sender, EventArgs e)
         {
-            var contact = new Contact(this.contactControl.NameTextBox.Text, 
-                this.contactControl.SurnameTextBox.Text, 
-                this.contactControl.BurthdayDateTimePicker.Value,
-                this.contactControl.PhoneTextBox.Text, 
-                this.contactControl.EmailTextBox.Text, 
-                this.contactControl.VkcomTextBox.Text);
-
-            Contact = contact;
-
-            DialogResult = DialogResult.OK;
-            this.Close();
+            try
+            {
+                var contact = new Contact(this.contactControl.NameTextBox.Text,
+                    this.contactControl.SurnameTextBox.Text,
+                    this.contactControl.BurthdayDateTimePicker.Value,
+                    this.contactControl.PhoneTextBox.Text,
+                    this.contactControl.EmailTextBox.Text,
+                    this.contactControl.VkcomTextBox.Text);
+                Contact = contact;
+                DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (ArgumentException argumentException)
+            {
+                MessageBox.Show(argumentException.Message, this.Text);
+            }
+            
         }
     }
 }
