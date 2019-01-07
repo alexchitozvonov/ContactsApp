@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace ContactsApp.UI
@@ -31,15 +32,21 @@ namespace ContactsApp.UI
             ProjectControl.Project = _project;
             ProjectControl.SelectedContactChanged += (sender, args) => ContactControl.UpdateData(ProjectControl.SelectedContact);
             Closing += (sender, args) => projectManager.SaveToFile(_project);
-            string birthdayed="Сегодня день рождения у:";
-            foreach (var contact in _project.Contacts)
+            StringBuilder birdthdayBuilder = new StringBuilder();
+            birdthdayBuilder.Append("Сегодня день рождения:");
+            birdthdayBuilder.AppendLine();
+            var sortedContacts = _project.GetSortedContacts();
+            bool birthdaysDelimitter = false;
+            for (int i = 0; i < sortedContacts.Count; i++)
             {
-                if (contact.DateOfBirthday.Day == DateTime.Now.Day && contact.DateOfBirthday.Month == DateTime.Now.Month)
+                if (sortedContacts[i].DateOfBirthday.Day == DateTime.Now.Day && sortedContacts[i].DateOfBirthday.Month == DateTime.Now.Month)
                 {
-                    birthdayed += $"{contact.Surname},";
+                    birdthdayBuilder.Append($"{(birthdaysDelimitter ? ", " : "")}{sortedContacts[i].Surname}");
+                    happyBirthdayPanel.Visible = true;
+                    birthdaysDelimitter = true;
                 }
             }
-            BirthdayTextBox.Text = birthdayed;
+            BirthdayTextBox.Text = birdthdayBuilder.ToString();
         }
 
 
