@@ -107,8 +107,12 @@ namespace ContactsApp.UI.Controls
         /// </summary>
         private void RemoveCurrentContact()
         {
-            Project.RemoveContact(_project.Contacts[ProjectListBox.SelectedIndex]);
-            UpdateContactsAction?.Invoke();
+            var contact = ProjectListBox.SelectedItem as Contact;
+            if (MessageBox.Show($"Do you really want to remove this contact: {contact.Surname}?", Form.ActiveForm.Text , MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                Project.RemoveContact(contact);
+                UpdateContactsAction?.Invoke();
+            }
         }
 
         /// <summary>
@@ -195,10 +199,7 @@ namespace ContactsApp.UI.Controls
         {
             if (e.KeyCode == Keys.Delete)
             {
-                if (MessageBox.Show("Удалить контакт?", this.Text, MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    RemoveCurrentContact();
-                }
+                RemoveCurrentContact();
             }
         }
     }
