@@ -135,7 +135,7 @@ namespace ContactsApp.UI.Controls
             var addForm = new AddForm(ProjectListBox.SelectedItem as Contact);
             if (addForm.ShowDialog() == DialogResult.OK)
             {
-                Project.RemoveContact(_project.Contacts[ProjectListBox.SelectedIndex]);
+                Project.RemoveContact(ProjectListBox.SelectedItem as Contact);
                 Project.AddContact(addForm.Contact);
                 UpdateContactsAction?.Invoke();
                 ProjectListBox.SelectedItem = addForm.Contact;
